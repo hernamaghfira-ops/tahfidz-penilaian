@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <title>TahfidzKu</title>
@@ -17,30 +18,47 @@ body{
 
 
 .header{
+
     background:#14532d;
+
     color:white;
-    padding:25px;
+
+    padding:30px;
+
     text-align:center;
+
 }
+
 
 
 .header h1{
+
     margin:0;
+
     font-size:32px;
+
 }
 
 
+
 .header p{
+
     margin-bottom:0;
+
 }
 
 
 
 .container{
+
     width:90%;
-    max-width:500px;
-    margin:25px auto;
+
+    max-width:600px;
+
+    margin:30px auto;
+
 }
+
 
 
 
@@ -60,6 +78,7 @@ body{
 
 
 
+
 .menu{
 
     display:flex;
@@ -72,15 +91,16 @@ body{
 
 
 
+
 .menu a{
 
     text-decoration:none;
 
-    background:#ffffff;
+    background:white;
 
     color:#14532d;
 
-    padding:15px;
+    padding:16px;
 
     border-radius:12px;
 
@@ -104,63 +124,17 @@ body{
 
 
 
-h2{
 
-    color:#14532d;
+.info{
 
     text-align:center;
 
-}
+    color:#555;
 
-
-
-input{
-
-    width:100%;
-
-    padding:12px;
-
-    margin:8px 0;
-
-    border:1px solid #ddd;
-
-    border-radius:8px;
-
-    box-sizing:border-box;
-
-    font-size:15px;
+    line-height:1.6;
 
 }
 
-
-
-button{
-
-    width:100%;
-
-    padding:13px;
-
-    background:#16a34a;
-
-    border:none;
-
-    color:white;
-
-    border-radius:8px;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-}
-
-
-
-button:hover{
-
-    background:#15803d;
-
-}
 
 
 
@@ -177,10 +151,11 @@ button:hover{
 }
 
 
+
 </style>
 
-</head>
 
+</head>
 
 
 <body>
@@ -197,15 +172,18 @@ button:hover{
 
 
 
+
 <div class="container">
 
 
 
-<!-- MENU -->
-
 <div class="card">
 
-<h2>Menu Utama</h2>
+
+<h2 style="color:#14532d;text-align:center;">
+Menu Utama
+</h2>
+
 
 
 <div class="menu">
@@ -244,43 +222,34 @@ button:hover{
 
 </div>
 
+
 </div>
 
 
 
 
-
-<!-- INPUT PENILAIAN -->
 
 <div class="card">
 
 
-<h2>Input Nilai Santri</h2>
+<div class="info">
+
+<h3 style="color:#14532d;">
+Selamat Datang di TahfidzKu
+</h3>
 
 
-
-<input id="nama" placeholder="Nama Santri">
-
-
-<input id="kelas" placeholder="Kelas">
-
-
-<input id="juz" placeholder="Juz Hafalan">
-
-
-<input id="nilai" placeholder="Nilai Hafalan">
-
-
-
-<button onclick="simpan()">
-
-Simpan Data
-
-</button>
+<p>
+Kelola data santri, penilaian hafalan,
+murojaah, dan perkembangan hafalan
+Al-Qur'an dengan lebih mudah.
+</p>
 
 
 </div>
 
+
+</div>
 
 
 
@@ -294,10 +263,6 @@ Simpan Data
 
 
 </div>
-
-
-
-<script src="script.js"></script>
 
 
 
