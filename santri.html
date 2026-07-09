@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Data Santri | TahfidzKu</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div class="container mt-5">
+
+<h2 class="mb-4">👳 Data Santri</h2>
+
+<div class="card p-4 shadow">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Nama Santri</label>
+<input type="text" class="form-control" id="nama">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>NIS</label>
+<input type="text" class="form-control" id="nis">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Kelas</label>
+<input type="text" class="form-control" id="kelas">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Halaqah</label>
+<input type="text" class="form-control" id="halaqah">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Partner Muroja'ah</label>
+<input type="text" class="form-control" id="partner">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Juz</label>
+<input type="number" class="form-control" id="juz">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Halaman Terakhir</label>
+<input type="number" class="form-control" id="halaman">
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Status</label>
+
+<select class="form-control" id="status">
+
+<option>Aktif</option>
+
+<option>Cuti</option>
+
+<option>Lulus</option>
+
+</select>
+
+</div>
+
+</div>
+
+<button class="btn btn-success mt-3" id="btnSimpan">
+💾 Simpan Santri
+</button>
+
+</div>
+
+<br>
+
+<div class="card p-4 shadow">
+
+<h4>Daftar Santri</h4>
+
+<table class="table table-striped mt-3">
+
+<thead>
+
+<tr>
+
+<th>Nama</th>
+
+<th>Kelas</th>
+
+<th>Halaqah</th>
+
+<th>Partner</th>
+
+<th>Juz</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tabelSantri">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
