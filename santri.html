@@ -88,6 +88,13 @@ cursor:pointer;
 }
 
 
+button:hover{
+
+background:#15803d;
+
+}
+
+
 
 table{
 
@@ -130,6 +137,8 @@ color:#14532d;
 
 text-decoration:none;
 
+margin-top:20px;
+
 }
 
 
@@ -153,7 +162,6 @@ grid-column:1;
 
 
 </style>
-
 
 </head>
 
@@ -186,26 +194,26 @@ grid-column:1;
 <div class="form">
 
 
-<input placeholder="NIS">
+<input id="nis" placeholder="NIS">
 
 
-<input placeholder="Nama Santri">
+<input id="nama" placeholder="Nama Santri">
 
 
-<input placeholder="Kelas">
+<input id="kelas" placeholder="Kelas">
 
 
-<input placeholder="Halaqah">
+<input id="halaqah" placeholder="Halaqah">
 
 
-<input placeholder="Target Hafalan (Juz)">
+<input id="target" placeholder="Target Hafalan (Juz)">
 
 
-<input placeholder="Jumlah Hafalan (Juz)">
+<input id="jumlah" placeholder="Jumlah Hafalan (Juz)">
 
 
 
-<button>
+<button onclick="simpanSantri()">
 + Simpan Data
 </button>
 
@@ -229,6 +237,8 @@ grid-column:1;
 <table>
 
 
+<thead>
+
 <tr>
 
 <th>No</th>
@@ -245,29 +255,14 @@ grid-column:1;
 
 <th>Jumlah Hafalan</th>
 
-
 </tr>
 
+</thead>
 
 
-<tr>
+<tbody id="tabelSantri">
 
-<td>1</td>
-
-<td>001</td>
-
-<td>Ahmad</td>
-
-<td>7A</td>
-
-<td>Al-Fatih</td>
-
-<td>5 Juz</td>
-
-<td>2 Juz</td>
-
-
-</tr>
+</tbody>
 
 
 </table>
@@ -285,6 +280,156 @@ grid-column:1;
 
 
 </div>
+
+
+
+
+
+<script>
+
+
+const API_SANTRI = "https://script.google.com/macros/s/AKfycbzFzsfqU_wLmR4Gp23HB1bfjMBXblE8Qoz-fuhDkK7bWlsMW4pmL9EgY5anSZrGolJuZA/exec";
+
+
+
+// ==========================
+// SIMPAN DATA SANTRI
+// ==========================
+
+function simpanSantri(){
+
+
+let data = {
+
+nis: document.getElementById("nis").value,
+
+nama: document.getElementById("nama").value,
+
+kelas: document.getElementById("kelas").value,
+
+halaqah: document.getElementById("halaqah").value,
+
+target: document.getElementById("target").value,
+
+jumlah: document.getElementById("jumlah").value
+
+};
+
+
+
+fetch(API_SANTRI,{
+
+method:"POST",
+
+body:JSON.stringify(data)
+
+})
+
+
+.then(res=>res.json())
+
+
+.then(result=>{
+
+
+alert("✅ Data santri berhasil disimpan");
+
+
+document.getElementById("nis").value="";
+document.getElementById("nama").value="";
+document.getElementById("kelas").value="";
+document.getElementById("halaqah").value="";
+document.getElementById("target").value="";
+document.getElementById("jumlah").value="";
+
+
+loadSantri();
+
+
+})
+
+
+.catch(error=>{
+
+alert("❌ Gagal menyimpan data");
+
+console.log(error);
+
+});
+
+
+}
+
+
+
+
+
+// ==========================
+// TAMPIL DATA SANTRI
+// ==========================
+
+function loadSantri(){
+
+
+fetch(API_SANTRI)
+
+.then(res=>res.json())
+
+
+.then(data=>{
+
+
+let tabel = document.getElementById("tabelSantri");
+
+
+tabel.innerHTML="";
+
+
+
+for(let i=1;i<data.length;i++){
+
+
+tabel.innerHTML += `
+
+<tr>
+
+<td>${i}</td>
+
+<td>${data[i][0]}</td>
+
+<td>${data[i][1]}</td>
+
+<td>${data[i][2]}</td>
+
+<td>${data[i][3]}</td>
+
+<td>${data[i][4]}</td>
+
+<td>${data[i][5]}</td>
+
+</tr>
+
+`;
+
+}
+
+
+});
+
+
+}
+
+
+
+
+
+// jalankan saat halaman dibuka
+
+loadSantri();
+
+
+</script>
+
 
 
 </body>
