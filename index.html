@@ -10,7 +10,7 @@
 <style>
 
 body{
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI', sans-serif;
     background:#f5f7f2;
     margin:0;
 }
@@ -30,39 +30,106 @@ body{
 }
 
 
+.header p{
+    margin-bottom:0;
+}
+
+
+
 .container{
     width:90%;
     max-width:500px;
-    margin:30px auto;
+    margin:25px auto;
 }
+
 
 
 .card{
+
     background:white;
+
     padding:25px;
+
     border-radius:15px;
+
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+    margin-bottom:20px;
+
 }
+
+
+
+.menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+
+.menu a{
+
+    text-decoration:none;
+
+    background:#ffffff;
+
+    color:#14532d;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+
+}
+
+
+
+.menu a:hover{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
 
 
 h2{
+
     color:#14532d;
+
     text-align:center;
+
 }
+
 
 
 input{
 
     width:100%;
+
     padding:12px;
+
     margin:8px 0;
 
     border:1px solid #ddd;
+
     border-radius:8px;
 
     box-sizing:border-box;
 
     font-size:15px;
+
 }
 
 
@@ -70,6 +137,7 @@ input{
 button{
 
     width:100%;
+
     padding:13px;
 
     background:#16a34a;
@@ -114,14 +182,16 @@ button:hover{
 </head>
 
 
+
 <body>
+
 
 
 <div class="header">
 
 <h1>📖 TahfidzKu</h1>
 
-<p>Platform Penilaian Hafalan Al-Qur'an</p>
+<p>Platform Manajemen Hafalan Al-Qur'an</p>
 
 </div>
 
@@ -130,10 +200,63 @@ button:hover{
 <div class="container">
 
 
+
+<!-- MENU -->
+
+<div class="card">
+
+<h2>Menu Utama</h2>
+
+
+<div class="menu">
+
+
+<a href="santri.html">
+👥 Data Santri
+</a>
+
+
+<a href="penilaian.html">
+📝 Penilaian
+</a>
+
+
+<a href="murojaah.html">
+📖 Murojaah
+</a>
+
+
+<a href="partner.html">
+🤝 Partner
+</a>
+
+
+<a href="rekap.html">
+📊 Rekap Nilai
+</a>
+
+
+<a href="setting.html">
+⚙️ Setting
+</a>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- INPUT PENILAIAN -->
+
 <div class="card">
 
 
 <h2>Input Nilai Santri</h2>
+
 
 
 <input id="nama" placeholder="Nama Santri">
@@ -148,12 +271,18 @@ button:hover{
 <input id="nilai" placeholder="Nilai Hafalan">
 
 
+
 <button onclick="simpan()">
+
 Simpan Data
+
 </button>
 
 
 </div>
+
+
+
 
 
 <div class="footer">
@@ -163,11 +292,13 @@ Simpan Data
 </div>
 
 
+
 </div>
 
 
 
 <script src="script.js"></script>
+
 
 
 </body>
