@@ -59,11 +59,8 @@ gap:12px;
 input,textarea{
 
 padding:12px;
-
 border:1px solid #ddd;
-
 border-radius:8px;
-
 font-size:15px;
 
 }
@@ -72,7 +69,6 @@ font-size:15px;
 textarea{
 
 grid-column:1/3;
-
 height:80px;
 
 }
@@ -100,6 +96,13 @@ cursor:pointer;
 }
 
 
+button:hover{
+
+background:#15803d;
+
+}
+
+
 
 table{
 
@@ -110,6 +113,7 @@ border-collapse:collapse;
 margin-top:20px;
 
 }
+
 
 
 th,td{
@@ -123,6 +127,7 @@ text-align:center;
 }
 
 
+
 th{
 
 background:#14532d;
@@ -130,6 +135,7 @@ background:#14532d;
 color:white;
 
 }
+
 
 
 .back{
@@ -141,6 +147,8 @@ text-align:center;
 color:#14532d;
 
 text-decoration:none;
+
+margin-top:20px;
 
 }
 
@@ -169,7 +177,6 @@ grid-column:1;
 </head>
 
 
-
 <body>
 
 
@@ -183,6 +190,7 @@ grid-column:1;
 
 
 
+
 <div class="container">
 
 
@@ -193,29 +201,23 @@ grid-column:1;
 <h2>Tambah Penilaian</h2>
 
 
+
 <div class="form">
 
 
 <input id="nis" placeholder="NIS">
 
-
 <input id="nama" placeholder="Nama Santri">
-
 
 <input id="tahfidz" placeholder="Nilai Tahfidz">
 
-
 <input id="murojaah" placeholder="Nilai Murojaah">
-
 
 <textarea id="catatan" placeholder="Catatan"></textarea>
 
 
-
 <button onclick="simpanNilai()">
-
 + Simpan Nilai
-
 </button>
 
 
@@ -227,14 +229,18 @@ grid-column:1;
 
 
 
+
 <div class="card">
 
 
 <h2>Daftar Nilai</h2>
 
 
+
 <table>
 
+
+<thead>
 
 <tr>
 
@@ -247,10 +253,14 @@ grid-column:1;
 
 </tr>
 
+</thead>
+
+
 
 <tbody id="tabelNilai">
 
 </tbody>
+
 
 
 </table>
@@ -276,13 +286,15 @@ grid-column:1;
 <script>
 
 
-const API =
+const API = 
 "https://script.google.com/macros/s/AKfycbzFzsfqU_wLmR4Gp23HB1bfjMBXblE8Qoz-fuhDkK7bWlsMW4pmL9EgY5anSZrGolJuZA/exec";
 
 
 
 
+// =====================
 // SIMPAN NILAI
+// =====================
 
 function simpanNilai(){
 
@@ -324,7 +336,26 @@ body:JSON.stringify(data)
 
 alert("✅ Nilai berhasil disimpan");
 
+
+
+document.getElementById("nis").value="";
+document.getElementById("nama").value="";
+document.getElementById("tahfidz").value="";
+document.getElementById("murojaah").value="";
+document.getElementById("catatan").value="";
+
+
+
 loadNilai();
+
+
+})
+
+
+.catch(()=>{
+
+
+alert("❌ Gagal menyimpan nilai");
 
 
 });
@@ -336,7 +367,9 @@ loadNilai();
 
 
 
-// TAMPIL NILAI
+// =====================
+// TAMPIL DATA NILAI
+// =====================
 
 function loadNilai(){
 
@@ -376,9 +409,7 @@ tabel.innerHTML +=`
 
 <td>${data[i][4]}</td>
 
-
 </tr>
-
 
 `;
 
