@@ -1,1 +1,1 @@
-console.log("Website Tahfidz siap digunakan");
+document.getElementById("santri").innerHTML = 0;
