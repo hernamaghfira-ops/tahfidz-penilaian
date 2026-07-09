@@ -1,53 +1,175 @@
-<!-- Sidebar -->
-    <aside class="sidebar">
+<!DOCTYPE html>
+<html>
+<head>
 
-        <h2 class="logo">🕌 TahfidzKu</h2>
+<title>TahfidzKu</title>
 
-        <ul style="list-style: none; padding: 0; margin: 0;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <!-- Class active ditaruh di li, teks dibungkus tag a -->
-            <li class="active">
-                <a href="index.html" style="display: block; width: 100%; padding: 10px 15px; text-decoration: none; color: inherit;">
-                    🏠 Dashboard
-                </a>
-            </li>
 
-            <li>
-                <a href="data-santri.html" style="display: block; width: 100%; padding: 10px 15px; text-decoration: none; color: inherit;">
-                    👳 Data Santri
-                </a>
-            </li>
+<style>
 
-            <li>
-                <a href="penilaian.html" style="display: block; width: 100%; padding: 10px 15px; text-decoration: none; color: inherit;">
-                    📝 Penilaian
-                </a>
-            </li>
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background:#f5f7f2;
+    margin:0;
+}
 
-            <li>
-                <a href="murojaah.html" style="display: block; width: 100%; padding: 10px 15px; text-decoration: none; color: inherit;">
-                    🔄 Muroja'ah
-                </a>
-            </li>
 
-            <li>
-                <a href="partner.html" style="display: block; width: 100%; padding: 10px 15px; text-decoration: none; color: inherit;">
-                    🤝 Partner
-                </a>
-            </li>
+.header{
+    background:#14532d;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
 
-            <li>
-                <a href="rekap.html" style="display: block; width: 100%; padding: 10px 15px; text-decoration: none; color: inherit;">
-                    📊 Rekap
-                </a>
-            </li>
 
-            <li>
-                <a href="pengaturan.html" style="display: block; width: 100%; padding: 10px 15px; text-decoration: none; color: inherit;">
-                    ⚙ Pengaturan
-                </a>
-            </li>
+.header h1{
+    margin:0;
+    font-size:32px;
+}
 
-        </ul>
 
-    </aside>
+.container{
+    width:90%;
+    max-width:500px;
+    margin:30px auto;
+}
+
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+
+h2{
+    color:#14532d;
+    text-align:center;
+}
+
+
+input{
+
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+
+    border:1px solid #ddd;
+    border-radius:8px;
+
+    box-sizing:border-box;
+
+    font-size:15px;
+}
+
+
+
+button{
+
+    width:100%;
+    padding:13px;
+
+    background:#16a34a;
+
+    border:none;
+
+    color:white;
+
+    border-radius:8px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+    background:#15803d;
+
+}
+
+
+
+.footer{
+
+    text-align:center;
+
+    margin-top:30px;
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+<h1>📖 TahfidzKu</h1>
+
+<p>Platform Penilaian Hafalan Al-Qur'an</p>
+
+</div>
+
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h2>Input Nilai Santri</h2>
+
+
+<input id="nama" placeholder="Nama Santri">
+
+
+<input id="kelas" placeholder="Kelas">
+
+
+<input id="juz" placeholder="Juz Hafalan">
+
+
+<input id="nilai" placeholder="Nilai Hafalan">
+
+
+<button onclick="simpan()">
+Simpan Data
+</button>
+
+
+</div>
+
+
+<div class="footer">
+
+© 2026 TahfidzKu
+
+</div>
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
