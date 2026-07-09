@@ -66,6 +66,8 @@ border:1px solid #ddd;
 
 border-radius:8px;
 
+font-size:15px;
+
 }
 
 
@@ -96,6 +98,16 @@ border-radius:8px;
 
 font-size:16px;
 
+cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+background:#15803d;
+
 }
 
 
@@ -105,6 +117,8 @@ table{
 width:100%;
 
 border-collapse:collapse;
+
+margin-top:20px;
 
 }
 
@@ -142,8 +156,28 @@ color:#14532d;
 
 text-decoration:none;
 
+margin-top:20px;
+
 }
 
+
+
+@media(max-width:600px){
+
+.form{
+
+grid-template-columns:1fr;
+
+}
+
+
+textarea,button{
+
+grid-column:1;
+
+}
+
+}
 
 </style>
 
@@ -165,7 +199,9 @@ text-decoration:none;
 
 
 
+
 <div class="container">
+
 
 
 <div class="card">
@@ -177,18 +213,21 @@ text-decoration:none;
 <div class="form">
 
 
-<input placeholder="Nama Santri">
+<input id="nis" placeholder="NIS Santri">
 
 
-<input type="date">
+<input id="nama" placeholder="Nama Santri">
 
 
-<input placeholder="Surah / Juz">
+<input id="tanggal" type="date">
 
 
-<select>
+<input id="juz" placeholder="Surah / Juz">
 
-<option>Status Hafalan</option>
+
+<select id="status">
+
+<option value="">Status Hafalan</option>
 
 <option>Lancar</option>
 
@@ -199,18 +238,23 @@ text-decoration:none;
 </select>
 
 
-<textarea placeholder="Catatan Pembimbing"></textarea>
+
+<textarea id="catatan" placeholder="Catatan Pembimbing"></textarea>
 
 
-<button>
+
+<button onclick="simpanMurojaah()">
+
 + Simpan Murojaah
+
 </button>
 
 
-</div>
-
 
 </div>
+
+</div>
+
 
 
 
@@ -221,53 +265,189 @@ text-decoration:none;
 <h2>Riwayat Murojaah</h2>
 
 
+
 <table>
 
+
+<thead>
 
 <tr>
 
 <th>No</th>
-
+<th>NIS</th>
 <th>Nama</th>
-
-<th>Materi</th>
-
+<th>Tanggal</th>
+<th>Juz</th>
 <th>Status</th>
-
 <th>Catatan</th>
 
 </tr>
 
 
-<tr>
+</thead>
 
-<td>1</td>
 
-<td>Ahmad</td>
+<tbody id="tabelMurojaah">
 
-<td>Juz 30</td>
-
-<td>Lancar</td>
-
-<td>Perbaiki makhraj</td>
-
-</tr>
+</tbody>
 
 
 </table>
 
 
+
 </div>
 
 
 
+
+
 <a class="back" href="index.html">
+
 ← Kembali Dashboard
+
 </a>
 
 
 
 </div>
+
+
+
+
+
+
+<script>
+
+
+const API =
+"https://script.google.com/macros/s/AKfycbzFzsfqU_wLmR4Gp23HB1bfjMBXblE8Qoz-fuhDkK7bWlsMW4pmL9EgY5anSZrGolJuZA/exec";
+
+
+
+
+// SIMPAN DATA
+
+function simpanMurojaah(){
+
+
+let data={
+
+
+tipe:"murojaah",
+
+
+nis:document.getElementById("nis").value,
+
+nama:document.getElementById("nama").value,
+
+tanggal:document.getElementById("tanggal").value,
+
+juz:document.getElementById("juz").value,
+
+status:document.getElementById("status").value,
+
+catatan:document.getElementById("catatan").value
+
+
+};
+
+
+
+fetch(API,{
+
+method:"POST",
+
+body:JSON.stringify(data)
+
+})
+
+
+.then(res=>res.json())
+
+
+.then(()=>{
+
+
+alert("✅ Murojaah berhasil disimpan");
+
+
+loadMurojaah();
+
+
+
+});
+
+
+
+}
+
+
+
+
+// AMBIL DATA
+
+function loadMurojaah(){
+
+
+fetch(API+"?tipe=murojaah")
+
+
+.then(res=>res.json())
+
+
+.then(data=>{
+
+
+let tabel=document.getElementById("tabelMurojaah");
+
+
+tabel.innerHTML="";
+
+
+
+for(let i=1;i<data.length;i++){
+
+
+tabel.innerHTML +=`
+
+<tr>
+
+<td>${i}</td>
+
+<td>${data[i][1]}</td>
+
+<td>${data[i][2]}</td>
+
+<td>${data[i][0]}</td>
+
+<td>${data[i][3]}</td>
+
+<td>${data[i][4]}</td>
+
+<td>${data[i][5]}</td>
+
+
+</tr>
+
+`;
+
+}
+
+
+
+});
+
+
+}
+
+
+
+loadMurojaah();
+
+
+</script>
+
 
 
 </body>
