@@ -5,9 +5,12 @@ const API_URL = "https://script.google.com/macros/s/AKfycbwLoMUKQ2UZulpem05GBJ1P
 // SIMPAN SANTRI
 // =====================
 
-document
-.getElementById("btnSimpan")
-.addEventListener("click", function(){
+let btnSimpan = document.getElementById("btnSimpan");
+
+
+if(btnSimpan){
+
+btnSimpan.addEventListener("click", function(){
 
 
 let data = {
@@ -36,29 +39,25 @@ Status: document.getElementById("status").value
 
 fetch(API_URL,{
 method:"POST",
-
 body:JSON.stringify(data)
-
 })
+
 
 .then(res=>res.json())
 
-.then(result=>{
 
+.then(result=>{
 
 alert("✅ Santri berhasil disimpan");
 
-
 loadSantri();
 
-
 });
 
 
-
 });
 
-
+}
 
 
 // =====================
@@ -69,18 +68,25 @@ loadSantri();
 function loadSantri(){
 
 
+let tabel = document.getElementById("tabelSantri");
+
+
+if(!tabel){
+    return;
+}
+
+
+
 fetch(API_URL+"?action=santri")
 
+
 .then(res=>res.json())
+
 
 .then(data=>{
 
 
-let tabel = document.getElementById("tabelSantri");
-
-
 tabel.innerHTML="";
-
 
 
 data.forEach(santri=>{
@@ -115,7 +121,5 @@ tabel.innerHTML += `
 
 }
 
-
-// jalankan saat halaman dibuka
 
 loadSantri();
