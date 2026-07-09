@@ -52,6 +52,8 @@ alert("✅ Santri berhasil disimpan");
 
 loadSantri();
 
+loadDashboard();
+
 });
 
 
@@ -63,7 +65,6 @@ loadSantri();
 // =====================
 // TAMPIL DATA SANTRI
 // =====================
-
 
 function loadSantri(){
 
@@ -112,7 +113,6 @@ tabel.innerHTML += `
 
 `;
 
-
 });
 
 
@@ -122,4 +122,47 @@ tabel.innerHTML += `
 }
 
 
+
+// =====================
+// DASHBOARD
+// =====================
+
+function loadDashboard(){
+
+
+let jumlahSantri = document.getElementById("jumlahSantri");
+
+
+if(!jumlahSantri){
+    return;
+}
+
+
+
+fetch(API_URL+"?action=santri")
+
+
+.then(res=>res.json())
+
+
+.then(data=>{
+
+
+jumlahSantri.innerHTML = data.length;
+
+
+});
+
+
+}
+
+
+
+
+// =====================
+// JALANKAN SEMUA
+// =====================
+
 loadSantri();
+
+loadDashboard();
