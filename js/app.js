@@ -1,18 +1,121 @@
-// ============================
-// TahfidzKu v1.0
-// ============================
+const API_URL = "https://script.google.com/macros/s/AKfycbwLoMUKQ2UZulpem05GBJ1P5PH3b3PiSt0uPeOJuYkw2H9v45PUgIM1WZ5kEj-kZhBI/exec";
 
-document.addEventListener("DOMContentLoaded", function () {
 
-    const dashboard = {
-        totalSantri: 0,
-        setoranHariIni: 0,
-        murojaahHariIni: 0,
-        rataRata: 0
-    };
+// =====================
+// SIMPAN SANTRI
+// =====================
 
-    document.getElementById("jumlahSantri").textContent = dashboard.totalSantri;
+document
+.getElementById("btnSimpan")
+.addEventListener("click", function(){
 
-    console.log("TahfidzKu berhasil dijalankan 🚀");
+
+let data = {
+
+ID: Date.now(),
+
+Nama: document.getElementById("nama").value,
+
+NIS: document.getElementById("nis").value,
+
+Kelas: document.getElementById("kelas").value,
+
+Halaqah: document.getElementById("halaqah").value,
+
+Partner: document.getElementById("partner").value,
+
+Juz: document.getElementById("juz").value,
+
+Halaman: document.getElementById("halaman").value,
+
+Status: document.getElementById("status").value
+
+};
+
+
+
+fetch(API_URL,{
+method:"POST",
+
+body:JSON.stringify(data)
+
+})
+
+.then(res=>res.json())
+
+.then(result=>{
+
+
+alert("✅ Santri berhasil disimpan");
+
+
+loadSantri();
+
 
 });
+
+
+
+});
+
+
+
+
+// =====================
+// TAMPIL DATA SANTRI
+// =====================
+
+
+function loadSantri(){
+
+
+fetch(API_URL+"?action=santri")
+
+.then(res=>res.json())
+
+.then(data=>{
+
+
+let tabel = document.getElementById("tabelSantri");
+
+
+tabel.innerHTML="";
+
+
+
+data.forEach(santri=>{
+
+
+tabel.innerHTML += `
+
+<tr>
+
+<td>${santri.Nama}</td>
+
+<td>${santri.Kelas}</td>
+
+<td>${santri.Halaqah}</td>
+
+<td>${santri.Partner}</td>
+
+<td>${santri.Juz}</td>
+
+<td>${santri.Status}</td>
+
+</tr>
+
+`;
+
+
+});
+
+
+});
+
+
+}
+
+
+// jalankan saat halaman dibuka
+
+loadSantri();
